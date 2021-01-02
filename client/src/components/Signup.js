@@ -4,7 +4,7 @@ import M from 'materialize-css';
 
 const Signup = () => {
   const history = useHistory();
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
@@ -19,18 +19,18 @@ const Signup = () => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        name,
+        username,
         password,
         email,
       })
     }).then(res => res.json())
     .then(data => {
       console.log(data)
-      if(data.error){
-        M.toast({html: data.error, classes: "#e53935 red darken-1"})
+      if(data.errorMessage){
+        M.toast({html: data.errorMessage, classes: "#e53935 red darken-1"})
       }
       else {
-        M.toast({html: data.message, classes:"#43a047 green darken-1"})
+        M.toast({html: data.successMessage, classes:"#43a047 green darken-1"})
         history.push('/signin')
       }
     }).catch(error => {
@@ -42,7 +42,7 @@ const Signup = () => {
     <div className="mycard">
       <div className="card auth-card input-field ">
         <h2>Instagram</h2>
-        <input type="text" placeholder="name" value={name} onChange={(e) => setName(e.target.value)}/>
+        <input type="text" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)}/>
         <input type="text" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
         <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         <button className="waves-effect waves-light btn #64b5f6 blue darken-1" onClick={() => PostData()}>Sign-up</button>
