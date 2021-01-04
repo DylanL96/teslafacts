@@ -63,11 +63,10 @@ const postComment = (req, res) => {
       res.json(result)
     }
   })
-}
-
+};
 
 module.exports = {
   postContent,
   getPostContent,
-  postComment
+  postComment,
 }

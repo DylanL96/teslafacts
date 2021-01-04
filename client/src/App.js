@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import User from './components/User';
 import UserRoute from './components/UserRoute';
 import CreatePost from './components/CreatePost';
+import Blogs from './components/Blogs';
 import './App.css';
 
 const App = () => {
@@ -17,10 +18,11 @@ const App = () => {
     <Navbar/>
     <Switch>
       <Route exact path='/' component={Home}/>
+      <Route exact path='/blog' component={Blogs}/>
       <Route exact path='/signup' component={Signup}/>
       <Route exact path='/signin' component={Signin}/>
       <AdminRoute exact path='/admin' component={Admin}/>
-      <AdminRoute exact path='/admin/create' component={CreatePost}/>
+      <AdminRoute exact path='/admin/blog/create' component={CreatePost}/>
       <UserRoute exact path='/user' component={User}/>
     </Switch>
     </>

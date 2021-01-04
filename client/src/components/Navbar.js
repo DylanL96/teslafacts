@@ -21,7 +21,7 @@ const Header = ({history}) => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-        <Nav.Link href="/">Home</Nav.Link>
+        <Nav.Link href="/blog">Blog</Nav.Link>
         {/* If not logged in, they will see signup and signin */}
         {!isAuthenticated() && (
           <Fragment>
@@ -39,7 +39,7 @@ const Header = ({history}) => {
         {isAuthenticated() && isAuthenticated().role === 1 && (
           <Fragment>
           <Nav.Link href="/admin">Admin Dashboard</Nav.Link>
-          <Nav.Link href="/admin/create">Create a Post</Nav.Link>         
+          <Nav.Link href="/admin/blog/create">Create a Post</Nav.Link>         
           </Fragment>
             )}
         {isAuthenticated() && (

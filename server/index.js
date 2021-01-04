@@ -7,7 +7,7 @@ const {mongoDBURL} = require('./config/database');
 //Routes
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
-const cors = require('cors');
+const blogRoute = require('./routes/blogRoutes');
 
 //Middleware
 //This is a type of middleware for POST and PUT requests that is necessary because we are sending data in the form of some data object to the server and asking the server to accept or store that data which is enclosed in the body (i.e. req.body) of that POST or PUT request
@@ -20,7 +20,7 @@ mongoose.connect(mongoDBURL,
     .catch((err) => {console.log(err)});
 
 //Connecting to routes
-
 app.use('/', authRoutes);
-app.use('/admin', adminRoutes);
+// app.use('/admin', adminRoutes);
+app.use('/blog', blogRoute);
 

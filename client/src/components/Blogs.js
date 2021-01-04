@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-const Home = () => {
+const Blog = () => {
   const [post, setPost] = useState([]);
   useEffect(() => {
-    fetch('/admin/posts', {
+    fetch('/blog/posts', {
       headers:{
         'Authorization': 'Bearer ' + localStorage.getItem('jwt')
       }
@@ -15,7 +15,7 @@ const Home = () => {
   },[])
 
   const makeComment = (text, postId) => {
-    fetch('/admin/comment', {
+    fetch('/blog/comment', {
       method: 'PUT',
       headers:{
         'Content-Type': 'application/json',
@@ -79,4 +79,4 @@ const Home = () => {
   )
 };
 
-export default Home;
+export default Blog;

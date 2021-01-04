@@ -12,7 +12,7 @@ const CreatePost = () => {
   //UseEffect will take effect when the URL gets updated. When does it get updated? When we upload a new image.
   useEffect(() => {
     if(url){
-      fetch('/admin/create', {
+      fetch('/admin/blog/create', {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",

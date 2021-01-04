@@ -4,7 +4,7 @@ const adminController = require('../controllers/admin');
 const requireLogin = require('../middleware/requireLogin')
 
 //Authorization routes
-router.post('/create',requireLogin, adminController.postContent);
+router.post('/blog/create',requireLogin, adminController.postContent);
 
 //GET request to get list of posts
 router.get('/posts',requireLogin, adminController.getPostContent);
