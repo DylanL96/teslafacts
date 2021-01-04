@@ -8,6 +8,7 @@ import Signin from './components/Signin';
 import Navbar from './components/Navbar';
 import User from './components/User';
 import UserRoute from './components/UserRoute';
+import CreatePost from './components/CreatePost';
 import './App.css';
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
       <Route exact path='/signup' component={Signup}/>
       <Route exact path='/signin' component={Signin}/>
       <AdminRoute exact path='/admin' component={Admin}/>
+      <AdminRoute exact path='/admin/create' component={CreatePost}/>
       <UserRoute exact path='/user' component={User}/>
     </Switch>
     </>
