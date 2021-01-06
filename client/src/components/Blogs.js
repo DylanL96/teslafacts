@@ -25,15 +25,16 @@ const Blog = () => {
         postId:postId,
         text:text,
       })
-    }).then(response => response.json())
+    }).then(response => 
+      response.json())
     .then(result => {
       // console.log(result)
       const newData = post.map(item=>{
         if(item._id === result._id){
-          console.log(result)
+          // console.log(result)
           return result
         } else {
-          console.log(item)
+          // console.log(item)
           return item
         }
       })
@@ -49,14 +50,23 @@ const Blog = () => {
     {
       post.map(item => {
         return (
-          <div className="card home-card" key={item._id}>
-          <h5>{item.title}{item.postedBy.username}
-          </h5>
-          <div className="card-image">
-            <img src={item.photo} alt="placeholder"/>
+          // <div className="card home-card" key={item._id}>
+          // <h5>{item.title}{item.postedBy.username}
+          // </h5>
+          // <div className="card-image">
+          //   <img src={item.photo} alt="placeholder"/>
+          // </div>
+          // <div className="card-content" key={item._id}>
+          // </div>
+          <div className="home-card" key={item._id}>
+          <img className="card-img-top" src={item.photo} alt="test"/>
+          <div className="card-body">
+          <h2 className="card-title">{item.title}</h2>
+            <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+            <a href={`/blog/posts/${item._id}`} className="btn btn-primary">Read More &rarr;</a>
           </div>
-          <div className="card-content" key={item._id}>
-          <i className="material-icons" style={{color: "red"}}>favorite</i>
+          <div className="card-footer text-muted">
+            Posted On: {item.postedBy.createdAt.slice(0,10)}
           </div>
             {
               item.comments.map(record => {

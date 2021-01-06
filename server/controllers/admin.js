@@ -7,6 +7,7 @@ const getPostContent = (req, res) => {
   Post.find()
     //references each user who commented on the post
     .populate('comments.postedBy')
+    .populate('postedBy')
     .then(posts => {
       // console.log(posts)
       // res.json({posts: posts})
@@ -65,9 +66,13 @@ const postComment = (req, res) => {
   })
 }
 
+const test = (req, res) => {
+  res.send('hi')
+}
 
 module.exports = {
   postContent,
   getPostContent,
-  postComment
+  postComment,
+  test
 }

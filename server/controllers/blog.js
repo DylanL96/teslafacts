@@ -6,6 +6,7 @@ const getPostContent = (req, res) => {
   //Finds all of the posts
   Post.find()
     //references each user who commented on the post
+    .populate('postedBy')
     .populate('comments.postedBy')
     .then(posts => {
       // console.log(posts)
@@ -39,7 +40,7 @@ const postContent = (req, res) => {
     .catch(error => {
       console.log(error)
     })
-};
+}
 
 //Function to post comments
 const postComment = (req, res) => {
@@ -65,8 +66,23 @@ const postComment = (req, res) => {
   })
 };
 
+const specificPostContent = (req, res) => {
+  // console.log(req.params.id)
+  Post.findById(req.params.id)
+    .populate('postedBy')
+    .populate('comments.postedBy')
+    .then(result => {
+      // console.log(result)
+      return res.json(result)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+};
+
 module.exports = {
   postContent,
   getPostContent,
   postComment,
-}
+  specificPostContent,
+};

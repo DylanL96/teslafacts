@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
   const token = authorization.replace("Bearer ", "")
   jwt.verify(token, JWT_SECRET, (error, payload) => {
     if(error){
-      return res.status(401).json({error: "You must be a admin to post!"})
+      return res.status(401).json({error: "You must be registered to view this section!"})
     }
     const {_id} = payload;
     User.findById(payload.user._id)

@@ -99,8 +99,14 @@ const testController = (req, res) => {
   res.send('Server Up')
 }
 
+const anotherTest = (req, res) => {
+  res.send('hi')
+}
+
+
 module.exports = {
   signupController,
   signinController,
-  testController
+  testController,
+  anotherTest
 };

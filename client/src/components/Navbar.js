@@ -20,8 +20,7 @@ const Header = ({history}) => {
       <Navbar.Brand href="/">Website</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-        <Nav.Link href="/blog">Blog</Nav.Link>
+      <Nav className="mr-auto">
         {/* If not logged in, they will see signup and signin */}
         {!isAuthenticated() && (
           <Fragment>
@@ -42,8 +41,10 @@ const Header = ({history}) => {
           <Nav.Link href="/admin/blog/create">Create a Post</Nav.Link>         
           </Fragment>
             )}
+        {/* If logged in,*/}
         {isAuthenticated() && (
           <Fragment>
+          <Nav.Link href="/blog">Blog</Nav.Link>
           <Nav.Link href="/signin" onClick={handleLogout}>Logout</Nav.Link>
           <Nav.Link href="/admin/create">Welcome, {userName.username}</Nav.Link>     
           </Fragment>

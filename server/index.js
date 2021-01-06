@@ -21,6 +21,6 @@ mongoose.connect(mongoDBURL,
 
 //Connecting to routes
 app.use('/', authRoutes);
-// app.use('/admin', adminRoutes);
+app.use('/admin', adminRoutes);
 app.use('/blog', blogRoute);
 
