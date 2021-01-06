@@ -66,6 +66,7 @@ const postComment = (req, res) => {
   })
 };
 
+//Getting the specific posts
 const specificPostContent = (req, res) => {
   // console.log(req.params.id)
   Post.findById(req.params.id)

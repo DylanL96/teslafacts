@@ -6,8 +6,8 @@ import AdminRoute from './components/AdminRoute';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
 import Navbar from './components/Navbar';
-import User from './components/User';
-import UserRoute from './components/UserRoute';
+// import User from './components/User';
+import RegisteredRoute from './components/RegisteredRoute';
 import CreatePost from './components/CreatePost';
 import Blogs from './components/Blogs';
 import SpecificPost from './components/SpecificPost';
@@ -21,11 +21,11 @@ const App = () => {
       <Route exact path='/' component={Home}/>
       <Route exact path='/signup' component={Signup}/>
       <Route exact path='/signin' component={Signin}/>
-      <Route exact path='/blog/posts/:id' component={SpecificPost}/>
-      <Route exact path='/blog' component={Blogs}/>
+      <RegisteredRoute exact path='/blog/posts/:id' component={SpecificPost}/>
+      <RegisteredRoute exact path='/blog' component={Blogs}/>
       <AdminRoute exact path='/admin' component={Admin}/>
       <AdminRoute exact path='/admin/blog/create' component={CreatePost}/>
-      <UserRoute exact path='/user' component={User}/>
+      {/* <UserRoute exact path='/user' component={User}/> */}
     </Switch>
     </>
   )

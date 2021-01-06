@@ -1,5 +1,4 @@
 const Post = require('../models/Post');
-const mongoose = require('mongoose');
 
 //Get all of the posts
 const getPostContent = (req, res) => {
@@ -66,13 +65,23 @@ const postComment = (req, res) => {
   })
 }
 
-const test = (req, res) => {
-  res.send('hi')
+//Route for deleting post
+const deletePost = (req, res) => {
+  // console.log(req.params.id)
+  Post.findByIdAndDelete(req.params.id)
+    .then(
+      res.status(200).send({
+        successMessage: `Deleted Post: ${req.params.id}`
+      })
+    )
+    .catch(error => {
+      console.log(error)
+    })
 }
 
 module.exports = {
   postContent,
   getPostContent,
   postComment,
-  test
+  deletePost
 }

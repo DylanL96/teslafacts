@@ -2,12 +2,13 @@ import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import {isAuthenticated} from '../helpers/auth';
 
-const UserRoute = ({ component: Component, ...rest}) => {
+const RegisteredRoute = ({ component: Component, ...rest}) => {
   return (
     <Route
       {...rest}
       render={(props) => 
-        isAuthenticated() && isAuthenticated().role === 0 ? (
+        // eslint-disable-next-line
+        isAuthenticated()  ? (
             <Component {...props} />
         ) : (
             <Redirect to='/signin' />
@@ -17,4 +18,4 @@ const UserRoute = ({ component: Component, ...rest}) => {
   )
 };
 
-export default UserRoute;
+export default RegisteredRoute;

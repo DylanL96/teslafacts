@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 const SpecificPost = ({match}) => {
   const [detail, setDetail] = useState([]);
-  const [loading, setLoading] = useState(true);
 
+  //Fetches the data of each individual post based on the ID
   useEffect(() => {
     fetch(`/blog/posts/${match.params.id}`, {
       headers:{
@@ -13,10 +13,10 @@ const SpecificPost = ({match}) => {
     .then(result => {
       console.log(result);
       setDetail(result)
-      setLoading(false)
     })
   },[match.params.id])
 
+  //Creating a comment
   const makeComment = (text, postId) => {
     fetch('/blog/comment', {
       method: 'PUT',
@@ -32,13 +32,14 @@ const SpecificPost = ({match}) => {
     .then(result => {
       // console.log(result)
       setDetail(result)
-      setLoading(false)
     }).catch(error => {
       console.log(error)
     })
-  } 
+  };
+  
+  
   return (
-  <div className="container">
+  <div className="container" key={detail._id}>
     <div className="row">
       {/* <!-- Post Content Column --> */}
       <div className="col-lg-8">
@@ -47,14 +48,13 @@ const SpecificPost = ({match}) => {
 
         {/* <!-- Author --> */}
         <p className="lead">
-          by
-          <a href="#"> Dylan</a>
+          By {detail.postedBy?.username}
         </p>
 
         <hr />
 
         {/* <!-- Date/Time --> */}
-        <p>Date Created: Dylan</p>
+        <p>Date Created: {detail.createdAt?.slice(0,10)}</p>
 
         <hr />
 
@@ -108,8 +108,8 @@ const SpecificPost = ({match}) => {
                         alt=""
                       />
                       <div className="media-body" key={detail._id}>
-                        <h5 className="mt-0">{record.postedBy.username}</h5>
-                        {record.text}
+                        <h5 className="mt-0" key={detail._id}>{record.postedBy.username}</h5>
+                        <p key={record._id}>{record.text}</p>
                       </div>
                     </div>
                   </>

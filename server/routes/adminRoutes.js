@@ -10,6 +10,9 @@ router.post('/blog/create',requireLogin, adminController.postContent);
 router.get('/posts',requireLogin, adminController.getPostContent);
 
 //PUT request for comments
-router.put('/comment', requireLogin, adminController.postComment);
+router.put('/comment', adminController.postComment);
+
+//DELETE request for posts
+router.delete('/posts/:id', requireLogin, adminController.deletePost);
 
 module.exports = router;
